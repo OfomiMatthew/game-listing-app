@@ -3,6 +3,7 @@ import GlobalApi from "../Services/GlobalApi";
 
 const Genre = () => {
   const [genre, setGenre] = useState([]);
+  const [activeIndex,setActiveIndex] = useState(0)
   const genreList = () => {
     GlobalApi.getGenreList.then((res) => {
       setGenre(res.data.results);
@@ -16,7 +17,7 @@ const Genre = () => {
   return (
     <div>
       <h2 className="text-[30px] font-bold dark:text-white">Genre</h2>
-      {genre.map((item) => {
+      {genre.map((item,index) => {
         return (
           <div
             key={item.id}
@@ -27,7 +28,9 @@ const Genre = () => {
               alt=""
               className="w-[50px] h-[50px] object-cover rounded-lg group-hover:scale-105 transition-all ease-out duration-300"
             />
-            <h3 className="text-[16px] font-semibold dark:text-white group-hover:scale-105 transition-all ease-out duration-300">{item.name}</h3>
+            <h3 className="text-[16px] font-semibold dark:text-white group-hover:scale-105 transition-all ease-out duration-300">
+              {item.name}
+            </h3>
           </div>
         );
       })}
