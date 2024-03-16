@@ -3,8 +3,9 @@ import GlobalApi from "../Services/GlobalApi";
 
 const Genre = () => {
   const [genre, setGenre] = useState([]);
-  const [activeIndex,setActiveIndex] = useState(0)
-  const genreList = () => {
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const genreListing = () => {
     GlobalApi.getGenreList.then((res) => {
       setGenre(res.data.results);
       console.log(res.data.results);
@@ -12,16 +13,21 @@ const Genre = () => {
   };
 
   useEffect(() => {
-    genreList();
+    genreListing();
   }, []);
   return (
     <div>
       <h2 className="text-[30px] font-bold dark:text-white">Genre</h2>
-      {genre.map((item,index) => {
+      {genre.map((item, index) => {
         return (
           <div
+            onClick={() => {
+              setActiveIndex(index);
+            }}
             key={item.id}
-            className="mb-3 flex items-center gap-3 hover:bg-gray-300 cursor-pointer p-3 rounded-lg hover:dark:bg-black group"
+            className={`mb-3 flex items-center gap-3 hover:bg-gray-300 cursor-pointer p-3 rounded-lg hover:dark:bg-black group ${
+              activeIndex == index ? "bg-gray-300 dark:bg-gray-600" : null
+            }`}
           >
             <img
               src={item.image_background}
