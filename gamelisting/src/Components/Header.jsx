@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import logo from "../assets/images/gameLogo.png";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { HiMoon } from "react-icons/hi2";
@@ -14,7 +14,7 @@ const Header = () => {
   },[])
   return (
     <div className="flex items-center gap-2 p-3">
-      <img src={logo} alt="logo" width={60} height={60} />
+      <img src={logo} alt="logo" width={60} height={60} className="animate-pulse" />
       <div className="flex bg-slate-200 p-2 w-full items-center gap-3 rounded-full">
         <HiMagnifyingGlass />
 

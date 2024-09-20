@@ -8,7 +8,9 @@ const axiosApi = axios.create({
 
 const getGenreList = axiosApi.get("/genres?key=" + key);
 const getAllGames = axiosApi.get("/games?key="+key)
+const getGameListByGenreId = (id)=>axiosApi.get('/games?key='+key+'&genres='+id)
 export default {
   getGenreList,
-  getAllGames
+  getAllGames,
+  getGameListByGenreId,
 };
